@@ -14,9 +14,16 @@ use Illuminate\Http\Request;
 
 class projetController extends Controller
 {
-    public function Déconnection()
+    public function Déconnection(Request $request)
     {
+        $request->session()->put('admin_logged_in', false);
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return view('interface.login');
+    }
+    public function acceuil()
+    {
+           return view('interface.acceuil');
     }
     public function login(Request $request)
     {
@@ -30,8 +37,9 @@ class projetController extends Controller
 
         // Vérification de l'utilisateur et de son mot de passe
         if ($admin && $admin->password === $password) {
-            return view('interface.acceuil');
             $request->session()->regenerate();
+            $request->session()->put('admin_logged_in', true);
+            return redirect()->intended('acceuil');
         } else {
             return back()->withErrors([
                 'login' => 'Les identifiants fournis sont incorrects.',

@@ -23,7 +23,13 @@
 </head>
 
 <body>
-    <section class="mt-5">
+<header>
+        <div class="row m-5">
+            <p class="col-10 fw-bold">Royaume du Maroc<br>Ministère de l'intérieur<br>Province de safi<br>SSICTD</p>
+            <img class="m-3 mt-2 col-1" src="/logo.jpeg" alt="image" />
+        </div>
+ </header>
+    <section>
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-md-3 image-container">
@@ -56,3 +62,6 @@
 </body>
 
 </html>
+<script>
+    window.history.forward();
+</script>

@@ -58,7 +58,7 @@
                     <div class="col-8">
                         <a href="{{route('ajoute4')}}"><button type="button" class="btn btn-primary me-2 w-50">Ajouter</button></a>
                     </div>
-                    <div class="col-4"> <input type="text" class="form-control w-100" placeholder="Rechercher...">
+                    <div class="col-4">
                     </div>
                 </div>
             </div>
@@ -106,12 +106,16 @@
                     <div class="col-8 mE-3 mb-3">
                         <a href="{{route('guide')}}"><button type="button" class="btn btn-primary me-2 w-25">Guide</button></a>
                     </div>
-                    <div class="col-4"> <button type="button" class="btn btn-success me-2 w-50">télecharger</button>
+                    <div class="col-4"> <button type="button" class="btn btn-success me-2 w-50" onclick="window.print()">télecharger</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
-
 </html>
+<script>
+  function printPage() {
+            window.print();
+   }
+</script>

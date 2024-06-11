@@ -16,6 +16,10 @@
 
 <body>
   <header class="mt-5">
+  <div class="row m-5">
+            <p class="col-10 fw-bold">Royaume du Maroc<br>Ministère de l'intérieur<br>Province de safi<br>SSICTD</p>
+            <img class="m-3 mt-2 col-1" src="/logo.jpeg" alt="image" />
+        </div>
     <div>
       <p class="text-center large-text text-primary">Gestion des mots de passe <br> et guides utilisateurs</p>
     </div>
@@ -52,3 +56,6 @@
     </div>
   </div>
 </body>
+<script>
+    window.history.forward();
+</script>

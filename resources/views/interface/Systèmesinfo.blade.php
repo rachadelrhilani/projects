@@ -75,7 +75,7 @@
           <div class="col-8">
             <a href="{{route('ajoute6')}}"><button type="button" class="btn btn-primary me-2 w-50">Ajouter</button></a>
           </div>
-          <div class="col-4"> <input type="text" class="form-control w-100" placeholder="Rechercher...">
+          <div class="col-4">
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@
               <button type="button" class="btn btn-primary me-2 w-25">Guide</button>
             </a>
           </div>
-          <div class="col-4"> <a href="/guide.docx"><button type="button" class="btn btn-success me-2 w-50">télecharger</button></a>
+          <div class="col-4"> <button type="button" class="btn btn-success me-2 w-50" onclick="window.print()">télecharger</button>
           </div>
         </div>
       </div>
@@ -154,5 +154,8 @@
   const selectedOption = localStorage.getItem('selectedOption');
   if (selectedOption) {
     selectCitrix.value = selectedOption;
+  }
+  function printPage() {
+            window.print();
   }
 </script>
