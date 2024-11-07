@@ -17,48 +17,74 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-
+<style>
+    .img1{
+        margin-left: 12%;
+    }
+</style>
 <body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-11">
-                <div class="border border-primary">
-                    <h1 class="text-center text-primary">Systèmes réseaux</h1>
-                </div>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10">
+            <div class="border border-primary">
+                <h1 class="text-center text-primary">Systèmes réseaux</h1>
             </div>
-            <div class="col-md-1 mt-2"><a href="{{route('Déconnection')}}"><button type="button" class="btn btn-warning">Déconnexion</button></a></div>
+        </div>
+        <div class="col-12 col-md-2 mt-2 text-md-end text-center">
+            <a href="{{route('Déconnection')}}">
+                <button type="button" class="btn btn-warning">Déconnexion</button>
+            </a>
         </div>
     </div>
-    </div>
-    <div class="mt-5">
-    <div class="row justify-content-center w-100">
-      <div class="col-md-12 w-75">
-        <div class="d-flex justify-content-between">
-          <a href="{{route('go')}}"><button type="button" class="btn btn-primary">Switch</button></a>
-          <a href="{{route('citrix')}}"><button type="button" class="btn btn-primary">Ancien citrix</button></a>
-          <a href="{{route('citrixBEC')}}"><button type="button" class="btn btn-primary">Citrix BEC</button></a>
-          <a href="{{route('citrixRSUS')}}"><button type="button" class="btn btn-primary">Citrix RSUS</button></a>
-          <a href="{{route('archi')}}"><button type="button" class="btn btn-primary">Architecture Réseau</button></a>
-        </div>
-      </div>
-    </div>
-  </div>
-    <div class="container me-1 mt-3 w-75">
-        <img src="/architecture.jpg" alt="">
-    </div>
-    <div class="container me-3 mt-5">
-        <div class="row justify-content-start">
-            <div class="col-md-12">
-                <div class="row w-100">
-                    <div class="col-8 mb-3">
-                        <a href="{{route('guide')}}"><button type="button" class="btn btn-primary me-2 w-25">Guide</button></a>
-                    </div>
-                    <div class="col-4"> <a href="/architecture.jpg" download><button type="button" class="btn btn-success me-2 w-50">télecharger</button></a>
-                    </div>
-                </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="d-flex flex-wrap justify-content-between">
+                <a href="{{route('go')}}">
+                    <button type="button" class="btn btn-primary mb-2 w-100 w-md-auto">Switch</button>
+                </a>
+                <a href="{{route('citrix')}}">
+                    <button type="button" class="btn btn-primary mb-2 w-100 w-md-auto">Ancien citrix</button>
+                </a>
+                <a href="{{route('citrixBEC')}}">
+                    <button type="button" class="btn btn-primary mb-2 w-100 w-md-auto">Citrix BEC</button>
+                </a>
+                <a href="{{route('citrixRSUS')}}">
+                    <button type="button" class="btn btn-primary mb-2 w-100 w-md-auto">Citrix RSUS</button>
+                </a>
+                <a href="{{route('archi')}}">
+                    <button type="button" class="btn btn-primary mb-2 w-100 w-md-auto">Architecture Réseau</button>
+                </a>
             </div>
         </div>
     </div>
+</div>
+
+<div class="container me-5 mt-3">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 overflow-auto">
+            <img src="/architecture.jpg" alt="Architecture Réseau" class="img-fluid img1">
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row ms-5">
+        <div class="col-12 col-md-6 mb-3">
+            <a href="{{route('guide')}}">
+                <button type="button" class="btn btn-primary w-50">Guide</button>
+            </a>
+        </div>
+        <div class="col-12 col-md-6">
+            <a href="/architecture.jpg" download>
+                <button type="button" class="btn btn-success w-50">Télécharger</button>
+            </a>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>

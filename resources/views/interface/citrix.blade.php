@@ -18,55 +18,63 @@
   @vite(['resources/sass/app.scss', 'resources/js/app.js'])
   <style>
     .img1 {
-      width: 28px;
+      width: 23px;
     }
 
     .img2 {
-      width: 28px;
+      width: 23px;
     }
   </style>
 </head>
 <body>
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-11">
-        <div class="border border-primary">
-          <h1 class="text-center text-primary">Systèmes réseaux</h1>
-        </div>
-      </div>
-      <div class="col-md-1 mt-2"><a href="{{route('Déconnection')}}"><button type="button" class="btn btn-warning">Déconnexion</button></a></div>
-    </div>
-  </div>
-  <div class="mt-5">
-    <div class="row justify-content-center w-100">
-      <div class="col-md-12 w-75">
-        <div class="d-flex justify-content-between">
-          <a href="{{route('go')}}"><button type="button" class="btn btn-primary">Switch</button></a>
-          <a href="{{route('citrix')}}"><button type="button" class="btn btn-primary">Ancien citrix</button></a>
-          <a href="{{route('citrixBEC')}}"><button type="button" class="btn btn-primary">Citrix BEC</button></a>
-          <a href="{{route('citrixRSUS')}}"><button type="button" class="btn btn-primary">Citrix RSUS</button></a>
-          <a href="{{route('archi')}}"><button type="button" class="btn btn-primary">Architecture Réseau</button></a>
-        </div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10">
+      <div class="border border-primary">
+        <h1 class="text-center text-primary">Systèmes réseaux</h1>
       </div>
     </div>
+    <div class="ccol-12 col-md-2 mt-2 text-center text-md-end">
+      <a href="{{route('Déconnection')}}">
+        <button type="button" class="btn btn-warning">Déconnexion</button>
+      </a>
+    </div>
   </div>
-  <div class="container mt-5">
-    <div class="row justify-content-start">
-      <div class="col-md-12">
-        <div class="row w-100">
-          <div class="col-8">
-            <a href="{{route('ajoute2')}}"><button type="button" class="btn btn-primary me-2 w-50">Ajouter</button></a>
-          </div>
-          <div class="col-4">
-          </div>
-        </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="d-flex flex-wrap justify-content-between">
+        <a href="{{route('go')}}"><button type="button" class="btn btn-primary mb-2">Switch</button></a>
+        <a href="{{route('citrix')}}"><button type="button" class="btn btn-primary mb-2">Ancien citrix</button></a>
+        <a href="{{route('citrixBEC')}}"><button type="button" class="btn btn-primary mb-2">Citrix BEC</button></a>
+        <a href="{{route('citrixRSUS')}}"><button type="button" class="btn btn-primary mb-2">Citrix RSUS</button></a>
+        <a href="{{route('archi')}}"><button type="button" class="btn btn-primary mb-2">Architecture Réseau</button></a>
       </div>
     </div>
   </div>
-  <div class="mt-5">
-    <div class="row justify-content-center w-100">
-      <div class="col-md-11">
-        <table class="table border">
+</div>
+
+<div class="container mt-5">
+  <div class="row justify-content-start">
+    <div class="col-5">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <a href="{{route('ajoute2')}}">
+            <button type="button" class="btn btn-primary w-100 mb-3">Ajouter</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-bordered">
           <thead>
             <tr class="table-primary">
               <th scope="col">Entité</th>
@@ -82,46 +90,51 @@
             </tr>
           </thead>
           <tbody>
-          @foreach( $citrixes as $citrix )
+            @foreach($citrixes as $citrix)
             <tr>
               <td>{{ $citrix->Entité }}</td>
-              <td>{{ $citrix->Chef_Entity }} </td>
-              <td>{{ $citrix->Login }} </td>
-              <td>{{ $citrix->Nouveau_login1 }} </td>
-              <td>{{ $citrix->Password1 }} </td>
-              <td>{{ $citrix->Colaborateur }} </td>
-              <td>{{ $citrix->Login2 }} </td>
-              <td>{{ $citrix->Nouveau_Login2 }} </td>
+              <td>{{ $citrix->Chef_Entity }}</td>
+              <td>{{ $citrix->Login }}</td>
+              <td>{{ $citrix->Nouveau_login1 }}</td>
+              <td>{{ $citrix->Password1 }}</td>
+              <td>{{ $citrix->Colaborateur }}</td>
+              <td>{{ $citrix->Login2 }}</td>
+              <td>{{ $citrix->Nouveau_Login2 }}</td>
               <td>{{ $citrix->Password2 }}</td>
               <td class="d-flex">
-                <a href="{{route('modifie2',$citrix->id)}}" class="mt-3"><img src="/modifier.png" class="img1" alt=""></a>
+                <a href="{{route('modifie2', $citrix->id)}}" class="me-2">
+                  <img src="/modifier.png" class="img1" alt="Modifier">
+                </a>
                 <form action="{{route('delete_ancien', $citrix->id)}}" method="post">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn mt-1"><img src="/supprimer.png" class="img2" alt=""></button>
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn p-0">
+                    <img src="/supprimer.png" class="img2" alt="Supprimer">
+                  </button>
                 </form>
               </td>
-              @endforeach
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  <div class="container mt-5">
-    <div class="row justify-content-start">
-      <div class="col-md-12">
-        <div class="row w-100">
-          <div class="col-8 mE-3 mb-3">
-            <a href="{{route('guide')}}"><button type="button" class="btn btn-primary me-2 w-25">Guide</button></a>
-          </div>
-         <!--  telechargement -->
-          <div class="col-4"> <button type="button" class="btn btn-success me-2 w-50" onclick="window.print()">télecharger</button>
-          </div>
-        </div>
-      </div>
+  {{ $citrixes->links()}}
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 col-md-6 mb-3">
+      <a href="{{route('guide')}}">
+        <button type="button" class="btn btn-primary w-50">Guide</button>
+      </a>
+    </div>
+    <div class="col-12 col-md-6">
+      <button type="button" class="btn btn-success w-50" onclick="window.print()">Télécharger</button>
     </div>
   </div>
+</div>
 </body>
 </html>
 <script>

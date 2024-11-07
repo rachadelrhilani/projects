@@ -53,19 +53,19 @@ class projetController extends Controller
     public function citrix()
     {
         $citrix = Citrix::where('nom', 'Ancien citrix')->first();
-        $citrixes = Citrix_information::where('id_citrix', $citrix->id)->get();
+        $citrixes = Citrix_information::where('id_citrix', $citrix->id)->paginate(2);
         return view('interface.citrix', compact('citrixes'));
     }
     public function citrix2()
     {
         $citrix = Citrix::where('nom', 'citrix BEC')->first();
-        $citrixes = Citrix_information::where('id_citrix', $citrix->id)->get();
+        $citrixes = Citrix_information::where('id_citrix', $citrix->id)->paginate(2);
         return view('interface.citrixBEC', compact('citrixes'));
     }
     public function citrix3()
     {
         $citrix = Citrix::where('nom', 'citrix RSUS')->first();
-        $citrixes = Citrix_information::where('id_citrix', $citrix->id)->get();
+        $citrixes = Citrix_information::where('id_citrix', $citrix->id)->paginate(2);
         return view('interface.citrixRSUS', compact('citrixes'));
     }
     public function ajoute2()

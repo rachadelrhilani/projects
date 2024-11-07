@@ -40,8 +40,8 @@ Route::middleware('custom')->group(function () {
     Route::get('/modifie4/{id}/modifieRSUS', [projetController::class, "modifie4"])->name('modifie4');
     Route::get('/modifie5/{id}/serveur', [projetController::class, "modifie5"])->name('modifie5');
     Route::get('/modifie6/{id}/info', [projetController::class, "modifie6"])->name('modifie6');
-    Route::delete('/citrix/{id}', [ProjetController::class, 'ancienDelete'])->name('delete_ancien');
     //Les CRUD DE SITE
+    Route::delete('/citrix/{id}', [ProjetController::class, 'ancienDelete'])->name('delete_ancien');
     Route::delete('/citrix/BEC/{id}', [ProjetController::class, 'BECDelete'])->name('BECDelete');
     Route::delete('/citrix/RSUS/{id}', [ProjetController::class, 'RSUSDelete'])->name('RSUSDelete');
     Route::delete('/serveurs/{id}', [ProjetController::class, 'serveurdelete'])->name('serveurdelete');

@@ -17,12 +17,10 @@
   <!-- Scripts -->
   @vite(['resources/sass/app.scss', 'resources/js/app.js'])
   <style>
-    .img1 {
-      width: 28px;
-    }
-
+    .img1,
     .img2 {
-      width: 28px;
+      max-width: 23px;
+      /* Limite la taille des icônes pour rester cohérent sur toutes les tailles d'écran */
     }
   </style>
 </head>
@@ -30,31 +28,35 @@
 <body>
   <div class="container mt-5">
     <div class="row justify-content-center">
-      <div class="col-md-11">
+      <div class="col-12 col-md-10">
         <div class="border border-primary">
           <h1 class="text-center text-primary">Systèmes réseaux</h1>
         </div>
       </div>
-      <div class="col-md-1 mt-2"><a href="{{route('Déconnection')}}"><button type="button" class="btn btn-warning">Déconnexion</button></a></div>
+      <div class="col-12 col-md-2 mt-2 text-center text-md-end">
+        <a href="{{ route('Déconnection') }}"><button type="button" class="btn btn-warning">Déconnexion</button></a>
+      </div>
     </div>
   </div>
-  <div class="mt-5">
-    <div class="row justify-content-center w-100">
-      <div class="col-md-12 w-75">
-        <div class="d-flex justify-content-between">
-          <a href="{{route('go')}}"><button type="button" class="btn btn-primary">Switch</button></a>
-          <a href="{{route('citrix')}}"><button type="button" class="btn btn-primary">Ancien citrix</button></a>
-          <a href="{{route('citrixBEC')}}"><button type="button" class="btn btn-primary">Citrix BEC</button></a>
-          <a href="{{route('citrixRSUS')}}"><button type="button" class="btn btn-primary">Citrix RSUS</button></a>
-          <a href="{{route('archi')}}"><button type="button" class="btn btn-primary">Architecture Réseau</button></a>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="d-flex flex-wrap justify-content-between">
+          <a href="{{ route('go') }}" class="mb-2"><button type="button" class="btn btn-primary">Switch</button></a>
+          <a href="{{ route('citrix') }}" class="mb-2"><button type="button" class="btn btn-primary">Ancien Citrix</button></a>
+          <a href="{{ route('citrixBEC') }}" class="mb-2"><button type="button" class="btn btn-primary">Citrix BEC</button></a>
+          <a href="{{ route('citrixRSUS') }}" class="mb-2"><button type="button" class="btn btn-primary">Citrix RSUS</button></a>
+          <a href="{{ route('archi') }}" class="mb-2"><button type="button" class="btn btn-primary">Architecture Réseau</button></a>
         </div>
       </div>
     </div>
   </div>
+
   <div class="container mt-5">
     <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form method="POST" action="{{route('switchshow')}}">
+      <div class="col-12 col-md-6">
+        <form method="POST" action="{{ route('switchshow') }}">
           @csrf
           <div class="mb-3">
             <label for="exampleFormControlSelect1" class="form-label">Sélectionner une option :</label>
@@ -70,60 +72,60 @@
               <option value="DAEC">DAEC</option>
               <option value="INDH">INDH</option>
             </select>
-            <input type="submit" class="btn btn-primary mt-3" name="envoye" value="submit">
+            <input type="submit" class="btn btn-primary mt-3" name="envoye" value="Submit">
           </div>
         </form>
       </div>
     </div>
   </div>
+
   <div class="container mt-5">
     <div class="row justify-content-start">
-      <div class="col-md-12">
-        <div class="row w-100">
-          <div class="col-8">
-            <a href="{{route('ajoute1')}}"><button type="button" class="btn btn-primary me-2 w-50">Ajouter</button></a>
-          </div>
-          <div class="col-4"> 
+      <div class="col-5">
+        <div class="row">
+          <div class="col-12 col-md-8 mb-3">
+            <a href="{{ route('ajoute1') }}"><button type="button" class="btn btn-primary w-100">Ajouter</button></a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="mt-5">
-    <div class="row justify-content-center w-100">
-      <div class="col-md-11">
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-12 overflow-auto">
         <table class="table border">
           <thead>
             <tr class="table-primary">
               <th scope="col">Division</th>
               <th scope="col">Nom hôte</th>
-              <th scope="col">Adresse Mac</th>
+              <th scope="col">Adresse MAC</th>
               <th scope="col">Port mural</th>
               <th scope="col">Interface</th>
               <th scope="col">VLAN</th>
-              <th scope="col">login</th>
-              <th scope="col">Motdepasse</th>
+              <th scope="col">Login</th>
+              <th scope="col">Mot de passe</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
-          @if(isset($_POST['envoye']))
+          @if(isset($_POST['choix']))
           @foreach($switches as $switch)
           <tbody>
             <tr>
-              <td>{{$switch->Division}}</td>
-              <td>{{$switch->Nom_hôte}}</td>
-              <td>{{$switch->Adresse_Mac}}</td>
-              <td>{{$switch->Port_mural}}</td>
-              <td>{{$switch->Interface}}</td>
-              <td>{{$switch->VLAN}}</td>
-              <td>{{$switch->login}}</td>
-              <td>{{$switch->Motdepasse}}</td>
+              <td>{{ $switch->Division }}</td>
+              <td>{{ $switch->Nom_hôte }}</td>
+              <td>{{ $switch->Adresse_Mac }}</td>
+              <td>{{ $switch->Port_mural }}</td>
+              <td>{{ $switch->Interface }}</td>
+              <td>{{ $switch->VLAN }}</td>
+              <td>{{ $switch->login }}</td>
+              <td>{{ $switch->Motdepasse }}</td>
               <td class="d-flex">
-                <a href="{{route('modifie1',$switch->id)}}" class="mt-3"><img src="/modifier.png" class="img1" alt=""></a>
-                <form action="{{route('switchdelete',$switch->id)}}" method="post">
+                <a href="{{ route('modifie1', $switch->id) }}" class="me-2"><img src="/modifier.png" class="img1" alt=""></a>
+                <form action="{{ route('switchdelete', $switch->id) }}" method="POST">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn mt-1"><img src="/supprimer.png" class="img2" alt=""></button>
+                  <button type="submit" class="btn p-0"><img src="/supprimer.png" class="img2" alt=""></button>
                 </form>
               </td>
             </tr>
@@ -134,16 +136,14 @@
       </div>
     </div>
   </div>
+
   <div class="container mt-5">
-    <div class="row justify-content-start">
-      <div class="col-md-12">
-        <div class="row w-100">
-          <div class="col-8 mE-3 mb-3">
-          <a href="{{route('guide')}}"><button type="button" class="btn btn-primary me-2 w-25">Guide</button></a>
-          </div>
-          <div class="col-4"> <button type="button" class="btn btn-success me-2 w-50" onclick="printPage()">télecharger</button>
-          </div>
-        </div>
+    <div class="row justify-content-between">
+      <div class="col-12 col-md-8 mb-3">
+        <a href="{{ route('guide') }}"><button type="button" class="btn btn-primary w-50">Guide</button></a>
+      </div>
+      <div class="col-12 col-md-4">
+        <button type="button" class="btn btn-success w-50" onclick="printPage()">Télécharger</button>
       </div>
     </div>
   </div>
@@ -165,8 +165,9 @@
   if (selectedOption) {
     selectCitrix.value = selectedOption;
   }
-        function printPage() {
-            window.print();
-            window.resizeTo(screen.width, screen.height);
-        }
+
+  function printPage() {
+    window.print();
+    window.resizeTo(screen.width, screen.height);
+  }
 </script>
